@@ -89,6 +89,12 @@ function RMDatabase() {
 }
 /*------  END : RMDatabase ------*/
 
+/*------ BEGIN: Pair ------*/
+function Pair(l, r) {
+    this.L = l;
+    this.R = r;
+}
+/*------  END : Pair ------*/
 // TODO: Formula
 // TODO: Equation
 // TODO: EquationBalance

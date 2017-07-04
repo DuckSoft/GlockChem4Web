@@ -83,7 +83,7 @@ function RMDatabase() {
         if (this.RMData.has(inAtom)) {
             return this.RMData.get(inAtom);
         } else {
-            return false;
+            return null;
         }
     }
 }

@@ -1,5 +1,5 @@
-export enum Formula_Exception {
-    /**»¯Ñ§Ê½ÖĞ³öÏÖ·Ç·¨×Ö·û*/
+ï»¿export enum Formula_Exception {
+    /**åŒ–å­¦å¼ä¸­å‡ºç°éæ³•å­—ç¬¦*/
     InvalidCharacterException
 }
 
@@ -17,27 +17,27 @@ export class Formula {
 
     private parseFormula(inFormula: string, numMultiplier: number): void {
         while (inFormula.length != 0) {
-            // ÕÒÒ»ÛçÔ­×Ó 
-			// sm[1]: Ô­×ÓÃû³Æ
-			// sm[2]: Ô­×ÓÊıÁ¿(ÓĞ¿ÉÄÜÎª¿Õ°×)
+            // æ‰¾ä¸€å¨åŸå­ 
+			// sm[1]: åŸå­åç§°
+			// sm[2]: åŸå­æ•°é‡(æœ‰å¯èƒ½ä¸ºç©ºç™½)
             let sm = inFormula.match(/^([A-Z][a-z]*)(\d*)/);
 
-            if (sm != null) {   // Èô³É¹¦ÌáÈ¡³öÔ­×Ó
+            if (sm != null) {   // è‹¥æˆåŠŸæå–å‡ºåŸå­
                 let tempNum: number;
 
-                if (sm[2] == "") {  // ÈôÃ»ÓĞÏÂ±ê
-                    tempNum = 1 * numMultiplier;    // Ä¬ÈÏÏÂ±êÎª1 
-                } else {    // ÓĞÏÂ±ê
+                if (sm[2] == "") {  // è‹¥æ²¡æœ‰ä¸‹æ ‡
+                    tempNum = 1 * numMultiplier;    // é»˜è®¤ä¸‹æ ‡ä¸º1 
+                } else {    // æœ‰ä¸‹æ ‡
                     tempNum = parseInt(sm[2]) * numMultiplier;
                 }
 
-                // ½»¸ø²åÈëËã·¨
+                // äº¤ç»™æ’å…¥ç®—æ³•
                 let tempStr: string = sm[1];
                 this.insertList(tempStr, tempNum);
             } else if (inFormula.charAt(0) == "*") {
-                // ÓÖÀ´ÁËÒ»¶ÎĞÂµÄ
-                // sm[1]: ¶Î³ËÊı
-                // sm[2]: ¶ÎÄÚÈİ
+                // åˆæ¥äº†ä¸€æ®µæ–°çš„
+                // sm[1]: æ®µä¹˜æ•°
+                // sm[2]: æ®µå†…å®¹
                 let sm = inFormula.match(/\*(\d*)([^*]+)[\*]??/);
 
                 if (sm != null) {
@@ -52,12 +52,12 @@ export class Formula {
                     let strTemp: string = sm[2];
                     inFormula = inFormula.substring(sm[0].length);
                     this.parseFormula(strTemp, tempNum);
-                } else {// ¿Õ¶ÎµÄ´¦Àí
-                    //TODO: ¿Õ¶Î
+                } else {// ç©ºæ®µçš„å¤„ç†
+                    //TODO: ç©ºæ®µ
                 }
 
             } else if (inFormula.charAt(0) == '(') {
-                //TODO: ÒÆÖ²À¨ºÅµÄ´¦Àí
+                //TODO: ç§»æ¤æ‹¬å·çš„å¤„ç†
             } else {
                 throw Formula_Exception.InvalidCharacterException;
             }

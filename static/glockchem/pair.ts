@@ -1,4 +1,4 @@
-export class Pair<L, R> {
+﻿export class Pair<L, R> {
     private l: L;
     private r: R;
 
